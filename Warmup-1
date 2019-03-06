@@ -149,5 +149,35 @@ Solution:
              return length<=1 ? str: str.charAt(length-1) + str.substring(1,length-1) + str.charAt(0); 
         }
 
+#front3
+Given a string, we'll say that the front is the first 3 chars of the string. 
+If the string length is less than 3, the front is whatever is there. Return a new string which is 3 copies of the front.
+
+Some Test Cases: 
+front3("Java") → "JavJavJav"
+front3("Chocolate") → "ChoChoCho"
+front3("abc") → "abcabcabc"
+
+Solution: 
+    public String front3(String str) {
+        return str.length() < 3 ? str+str+str:  str.substring(0,3) + str.substring(0,3) + str.substring(0,3);   
+    }
+    
+#backAround 
+Given a string, take the last char and return a new string with the last char added at the front and back, 
+so "cat" yields "tcatt". The original string will be length 1 or more.
+
+Some Test Cases: 
+backAround("cat") → "tcatt"
+backAround("Hello") → "oHelloo"
+backAround("a") → "aaa"
+
+Solution: 
+        public String backAround(String str) {
+          String lastChar = str.substring(str.length()-1); 
+          return lastChar + str+ lastChar; 
+        }
+
+
 
 
