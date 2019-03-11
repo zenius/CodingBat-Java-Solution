@@ -246,5 +246,55 @@ Solution:
            return (a>=10 && a<=20)|| (b>=10 && b<=20); 
         }
 
+#hasTeen
+We'll say that a number is "teen" if it is in the range 13..19 inclusive. 
+Given 3 int values, return true if 1 or more of them are teen.
 
+Some Test cases: 
+hasTeen(13, 20, 10) → true
+hasTeen(20, 19, 10) → true
+hasTeen(20, 10, 13) → true
 
+Solution:       
+        public boolean hasTeen(int a, int b, int c) {
+             return isTeen(a) || isTeen(b) || isTeen(c); 
+        }
+
+        public boolean isTeen(int num) { 
+          return num>=13 && num <=19;  
+        }
+
+#loneTeen
+We'll say that a number is "teen" if it is in the range 13..19 inclusive. 
+Given 2 int values, return true if one or the other is teen, but not both.
+
+Some Test Cases: 
+loneTeen(13, 99) → true
+loneTeen(21, 19) → true
+loneTeen(13, 13) → false
+
+Solution: 
+        public boolean loneTeen(int a, int b) {
+              return isTeen(a)!= isTeen(b); 
+        }
+
+        public boolean isTeen(int num) { 
+          return num >=13 && num <=19;  
+        }
+        
+#delDel 
+Given a string, if the string "del" appears starting at index 1, return a string where that "del" has been deleted.
+Otherwise, return the string unchanged.
+
+Some Test Cases: 
+delDel("adelbc") → "abc"
+delDel("adelHello") → "aHello"
+delDel("adedbc") → "adedbc"
+
+Solution: 
+        public String delDel(String str) {
+          if(str.length() >=4 && str.charAt(1) =='d' && str.substring(1,4).equals("del")) {
+            return str.substring(0,1) + str.substring(4); 
+          }
+          return str; 
+        }
