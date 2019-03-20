@@ -38,6 +38,18 @@ Solution:
               result.append(str.substring(0,3)); 
           }
           return result.toString(); 
+          
+          /*
+                  int length = str.length(); 
+                  StringBuilder result = new StringBuilder(); 
+                  String repeat =""; 
+                  if(length<3) { repeat +=str;}
+                  else {repeat += str.substring(0,3);} 
+                  for(int i=0;i<n;i++){
+                    result.append(repeat); 
+                  } 
+                  return result.toString(); 
+          */
         }
 
 #countXX 
@@ -75,6 +87,68 @@ Solution:
         return i!=-1 ?
           i < str.length()-1 && str.charAt(i)=='x' && str.charAt(i+1) =='x': false ; 
       }
+
+#stringBits 
+Given a string, return a new string made of every other char starting with the first, so "Hello" yields "Hlo".
+
+Some Test Cases: 
+stringBits("Hello") → "Hlo"
+stringBits("Hi") → "H"
+stringBits("Heeololeo") → "Hello"
+
+Solution: 
+        public String stringBits(String str) {
+          StringBuilder result = new StringBuilder(); 
+          int length = str.length(); 
+          for(int i =0 ;i< length;i+=2){
+              result.append(str.charAt(i)); 
+          } 
+          return result.toString(); 
+        }
+
+#stringSplosion
+Given a non-empty string like "Code" return a string like "CCoCodCode".
+
+Some Test Cases: 
+stringSplosion("Code") → "CCoCodCode"
+stringSplosion("abc") → "aababc"
+stringSplosion("ab") → "aab"
+
+Solution: 
+        public String stringSplosion(String str) {
+          StringBuilder result = new StringBuilder(); 
+          int length = str.length(); 
+          for(int i = 0;i < length;i++){ 
+            result.append(str.substring(0,i+1)); 
+          } 
+          return result.toString();
+        }
+
+#last2
+Given a string, return the count of the number of times that a substring length 2 appears in the string and 
+also as the last 2 chars of the string, so "hixxxhi" yields 1 (we won't count the end substring).
+
+Some Test Cases: 
+last2("hixxhi") → 1
+last2("xaxxaxaxx") → 1
+last2("axxxaaxx") → 2
+
+Solution: 
+        public int last2(String str) {
+          int length = str.length(); 
+          if(length <=2){ return 0;}
+
+          int count = 0; 
+          String last2 = str.substring(length-2);
+          for(int i= 0; i< lengtsh - 2; i++) { 
+            if(str.substring(i,i+2).equals(last2)){ 
+              count++;  
+            }
+          }
+          return count; 
+        }
+
+
 
 
 
