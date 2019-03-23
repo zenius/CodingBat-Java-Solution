@@ -233,4 +233,78 @@ Solution:
             }
           }
           return samePositionCount; 
-        }       
+        }   
+
+#stringX 
+Given a string, return a version where all the "x" have been removed. Except an "x" at the very start or end should not be removed.
+
+Some Test Cases: 
+stringX("xxHxix") → "xHix"
+stringX("abxxxcd") → "abcd"
+stringX("xabxxxcdx") → "xabcdx"
+
+Solution: 
+        public String stringX(String str) {
+          int length = str.length(); 
+          if(length<=2) { return str; }    
+          
+          String result = ""; 
+          result +=str.charAt(0);    // char at start 
+          for(int i=1;i< length-1;i++) { 
+             if(str.charAt(i)!='x' ) { 
+               result += str.charAt(i);
+             }
+          }
+          result +=str.charAt(length-1); // char at end 
+          return result; 
+        }
+
+#altPairs 
+Given a string, return a string made of the chars at indexes 0,1, 4,5, 8,9 ... so "kittens" yields "kien".
+
+Some Test Cases: 
+altPairs("kitten") → "kien"
+altPairs("Chocolate") → "Chole"
+altPairs("CodingHorror") → "Congrr"
+
+Solution: 
+        public String altPairs(String str) {
+          int length = str.length(); 
+          String result ="";
+          for(int i = 0 ; i< length; i+=4) { 
+            int end = i+2; 
+            // bound to end of the string 
+            if(end > length){ 
+              end = length; 
+            }
+            result += str.substring(i,end);  
+          }
+          return result; 
+        }
+        
+#stringYak 
+Suppose the string "yak" is unlucky. Given a string, return a version where all the "yak" are removed, 
+but the "a" can be any char. The "yak" strings will not overlap.
+
+Some Test Cases: 
+stringYak("yakpak") → "pak"
+stringYak("pakyak") → "pak"
+stringYak("yak123ya") → "123ya"
+
+Solution: 
+        public String stringYak(String str) {
+             int length = str.length();
+             String result = "";
+             for (int i = 0; i < length; i++) {
+                 if (i + 2 < length && str.charAt(i) == 'y' && str.charAt(i + 2) == 'k') {
+                     i = i + 2;
+                 } else {
+                     result += str.charAt(i);
+                 }
+             }
+
+             return result;
+         }
+   
+
+
