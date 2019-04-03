@@ -38,6 +38,8 @@ Solution:
         public String makeTags(String tag, String word) {
             return "<" + tag + ">" + word + "</" + tag + ">"; 
         }
+
+
         
 #makeOutWord
 Given an "out" string length 4, such as "<<>>", and a word, return a new string where the word is in the middle of the out string,
@@ -188,3 +190,86 @@ Solution:
         public String withouEnd2(String str) {
           return str.length()<=2 ? "": str.substring(1,str.length()-1);
         }     
+
+#middleTwo 
+Given a string of even length, return a string made of the middle two chars, so the string "string" yields "ri". 
+The string length will be at least 2.
+
+Some Test Cases: 
+middleTwo("string") → "ri"
+middleTwo("code") → "od"
+middleTwo("Practice") → "ct"
+
+Solution: 
+         public String middleTwo(String str) {
+           return str.substring(str.length()/2-1, str.length()/2+1); 
+        }
+
+#endsLy
+Given a string, return true if it ends in "ly".
+
+Some Test Cases: 
+endsLy("oddly") → true
+endsLy("y") → false
+endsLy("oddy") → false
+
+Solution: 
+         public boolean endsLy(String str) {
+            return str.length()>=2 && str.substring(str.length()-2).equals("ly"); 
+        }
+        
+#nTwice 
+Given a string and an int n, return a string made of the first and last n chars from the string. The string length will be at least n.
+
+Some Test Cases: 
+nTwice("Hello", 2) → "Helo"
+nTwice("Chocolate", 3) → "Choate"
+nTwice("Chocolate", 1) → "Ce"
+
+Solution: 
+        public String nTwice(String str, int n) {
+          return str.substring(0,n) + str.substring(str.length()-n); 
+        }
+
+#twoChar 
+Given a string and an index, return a string length 2 starting at the given index. 
+If the index is too big or too small to define a string length 2, use the first 2 chars. The string length will be at least 2.
+
+Some Test Cases: 
+twoChar("java", 0) → "ja"
+twoChar("java", 2) → "va"
+twoChar("java", 3) → "ja"
+
+Solution: 
+        public String twoChar(String str, int index) {
+             return  (str.length() <= index + 1 || index < 0) ? str.substring(0,2): str.substring(index, index + 2);
+        }
+
+#middleThree
+Given a string of odd length, return the string length 3 from its middle, so "Candy" yields "and". The string length will be at least 3.
+
+Some Test Cases: 
+middleThree("Candy") → "and"
+middleThree("and") → "and"
+middleThree("solving") → "lvi"
+
+Solution: 
+        public String middleThree(String str) {
+           return  str.substring(str.length()/2-1, str.length()/2 + 2 ); 
+        }
+
+#hasBad 
+Given a string, return true if "bad" appears starting at index 0 or 1 in the string, such as with "badxxx" or "xbadxx" but not "xxbadxx". 
+The string may be any length, including 0. Note: use .equals() to compare 2 strings.
+
+Some Test Cases: 
+hasBad("badxx") → true
+hasBad("xbadxx") → true
+hasBad("xxbadxx") → false
+
+Solution: 
+        public boolean hasBad(String str) {
+          if (str.length()>=3 && str.substring(0,3).equals("bad")) return true;
+          if (str.length()>=4 && str.substring(1,4).equals("bad")) return true;
+          return false; 
+        }
