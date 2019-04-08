@@ -273,3 +273,51 @@ Solution:
           if (str.length()>=4 && str.substring(1,4).equals("bad")) return true;
           return false; 
         }
+
+#atFirst 
+Given a string, return a string length 2 made of its first 2 chars. If the string length is less than 2,
+use '@' for the missing chars.
+
+Some Test Cases: 
+atFirst("hello") → "he"
+atFirst("hi") → "hi"
+atFirst("h") → "h@"
+
+Solution: 
+        public String atFirst(String str) {
+          if(str.length() == 0){ return "@@"; }
+          if(str.length() == 1) { return str + "@"; }
+          return str.substring(0,2); 
+        }
+        
+#lastChars 
+Given 2 strings, a and b, return a new string made of the first char of a and the last char of b, so "yo" and 
+"java" yields "ya". If either string is length 0, use '@' for its missing char.
+
+Some Test Cases: 
+lastChars("last", "chars") → "ls"
+lastChars("yo", "java") → "ya"
+lastChars("hi", "") → "h@"
+
+Solution: 
+        public String lastChars(String a, String b) {
+          return (a.length()> 0 ? a.substring(0,1): "@")  + (b.length() > 0 ? b.substring(b.length()-1): "@");  
+        }
+
+#conCat 
+Given two strings, append them together (known as "concatenation") and return the result. However, if the concatenation 
+creates a double-char, then omit one of the chars, so "abc" and "cat" yields "abcat".
+
+Some Test Cases: 
+conCat("abc", "cat") → "abcat"
+conCat("dog", "cat") → "dogcat"
+conCat("abc", "") → "abc"
+
+Solution: 
+        public String conCat(String a, String b) {
+          if (a.length() == 0 || b.length() == 0) 
+            return a + b;
+          else if ((a.substring(a.length() - 1)).equals(b.substring(0,1)))
+            return a + b.substring(1);
+          return a + b; 
+        }
