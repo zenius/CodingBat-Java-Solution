@@ -321,3 +321,134 @@ Solution:
             return a + b.substring(1);
           return a + b; 
         }
+        
+#lastTwo 
+Given a string of any length, return a new string where the last 2 chars, if present, are swapped, 
+so "coding" yields "codign".
+
+Some Test Cases: 
+lastTwo("coding") → "codign"
+lastTwo("cat") → "cta"
+lastTwo("ab") → "ba"
+
+Solution: 
+        public String lastTwo(String str) {
+            int length = str.length(); 
+            if(length < 2) { return str; }
+            return str.substring(0,length-2) + str.charAt(length-1) + str.charAt(length-2); 
+        }
+
+#seeColor 
+Given a string, if the string begins with "red" or "blue" return that color string, otherwise return the empty string.
+
+Some Test Cases: 
+seeColor("redxx") → "red"
+seeColor("xxred") → ""
+seeColor("blueTimes") → "blue"
+
+Solution: 
+          public String seeColor(String str) {
+             String color = ""; 
+             if(str.startsWith("red")) { 
+               color ="red";  
+             } else if(str.startsWith("blue")) { 
+               color = "blue";
+             }
+             return color; 
+          }
+          
+#frontAgain 
+Given a string, return true if the first 2 chars in the string also appear at the end of the string, such as with "edited".
+
+Some Test Cases: 
+frontAgain("edited") → true
+frontAgain("edit") → false
+frontAgain("ed") → true
+
+Solution: 
+          public boolean frontAgain(String str) {
+             if (str.length() < 2) {
+                 return false;
+             }
+             return str.substring(0, 2).equals(str.substring(str.length() - 2));
+         }
+
+#minCat 
+Given two strings, append them together (known as "concatenation") and return the result. 
+However, if the strings are different lengths, omit chars from the longer string so it is 
+the same length as the shorter string. So "Hello" and "Hi" yield "loHi". The strings may be any length.
+
+Some Test Cases: 
+minCat("Hello", "Hi") → "loHi"
+minCat("Hello", "java") → "ellojava"
+minCat("java", "Hello") → "javaello"
+
+Solution: 
+         public String minCat(String a, String b) {
+            return a.length() > b.length() ?
+                   a.substring(a.length() - b.length()) + b :
+                   a + b.substring(b.length() - a.length());
+         }
+         
+#extraFront 
+Given a string, return a new string made of 3 copies of the first 2 chars of the original string. 
+The string may be any length. If there are fewer than 2 chars, use whatever is there.
+
+Some Test Cases: 
+extraFront("Hello") → "HeHeHe"
+extraFront("ab") → "ababab"
+extraFront("H") → "HHH"
+
+Solution: 
+        public String extraFront(String str) {
+            if (str.length() < 2) {
+                return str + str + str;
+            }
+            String front = str.substring(0, 2);
+            return front + front + front;
+        }
+
+#without2
+Given a string, if a length 2 substring appears at both its beginning and end, return a string without the 
+substring at the beginning, so "HelloHe" yields "lloHe". The substring may overlap with itself, 
+so "Hi" yields "". Otherwise, return the original string unchanged.
+
+Some Test Cases: 
+without2("HelloHe") → "lloHe"
+without2("HelloHi") → "HelloHi"
+without2("Hi") → ""
+
+Solution: 
+        public String without2(String str) {
+            int length = str.length();
+            if (length <= 1) {
+                return str; // original string 
+            }
+            String firstTwoChars = str.substring(0, 2);
+            String lastTwoChars = str.substring(length - 2);
+            if (firstTwoChars.equals(lastTwoChars)) {
+                return str.substring(2); // exclude first two characters of the original string
+            }
+            return str; // original string 
+        }
+
+#deFront 
+Given a string, return a version without the first 2 chars. Except keep the first char if it is 'a' and 
+keep the second char if it is 'b'. The string may be any length. Harder than it looks.
+
+Some Test Cases: 
+deFront("Hello") → "llo"
+deFront("java") → "va"
+deFront("away") → "aay"
+
+Solution: 
+        public String deFront(String str) {
+            //if(str.length() == 0) return str; 
+            if (str.length() <= 1 && str.charAt(0) != 'a') return "";
+            String result = "";
+            result += str.charAt(0) == 'a' ? 'a' : "";
+            result += str.charAt(1) == 'b' ? 'b' : "";
+            result += str.substring(2);
+            return result;
+        }
+
