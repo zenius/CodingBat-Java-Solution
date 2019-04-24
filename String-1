@@ -12,7 +12,8 @@ Solution:
         }
         
 #makeAbba
-Given two strings, a and b, return the result of putting them together in the order abba, e.g. "Hi" and "Bye" returns "HiByeByeHi".
+Given two strings, a and b, return the result of putting them together in the order abba, 
+e.g. "Hi" and "Bye" returns "HiByeByeHi".
 
 Some Test Cases: 
 makeAbba("Hi", "Bye") → "HiByeByeHi"
@@ -42,8 +43,10 @@ Solution:
 
         
 #makeOutWord
-Given an "out" string length 4, such as "<<>>", and a word, return a new string where the word is in the middle of the out string,
-e.g. "<<word>>". Note: use str.substring(i, j) to extract the String starting at index i and going up to but not including index j.
+Given an "out" string length 4, such as "<<>>", and a word, return a new string where 
+the word is in the middle of the out string,
+e.g. "<<word>>". Note: use str.substring(i, j) to extract 
+the String starting at index i and going up to but not including index j.
 
 Some Test Cases: 
 makeOutWord("<<>>", "Yay") → "<<Yay>>"
@@ -72,7 +75,8 @@ Solution:
         
 #firstTwo 
 Given a string, return the string made of its first two chars, so the String "Hello" yields "He". 
-If the string is shorter than length 2, return whatever there is, so "X" yields "X", and the empty string "" yields the empty string "". 
+If the string is shorter than length 2, return whatever there is, so "X" yields "X", and 
+the empty string "" yields the empty string "". 
 Note that str.length() returns the length of a string.
 
 Some Test Cases: 
@@ -99,7 +103,8 @@ Solution:
         }
         
 #withoutEnd 
-Given a string, return a version without the first and last char, so "Hello" yields "ell". The string length will be at least 2.
+Given a string, return a version without the first and last char, so "Hello" yields "ell". 
+The string length will be at least 2.
 
 Some Test Cases: 
 withoutEnd("Hello") → "ell"
@@ -139,7 +144,8 @@ Solution:
         }
 
 #left2
-Given a string, return a "rotated left 2" version where the first 2 chars are moved to the end. The string length will be at least 2.
+Given a string, return a "rotated left 2" version where the first 2 chars are moved to the end. 
+The string length will be at least 2.
 
 Some Test Cases: 
 left2("Hello") → "lloHe"
@@ -152,7 +158,8 @@ Solution:
         }
 
 #right2
-Given a string, return a "rotated right 2" version where the last 2 chars are moved to the start. The string length will be at least 2.
+Given a string, return a "rotated right 2" version where the last 2 chars are moved to the start. 
+The string length will be at least 2.
 
 Some Test Cases: 
 right2("Hello") → "loHel"
@@ -165,7 +172,8 @@ Solution:
         }
 
 #theEnd 
-Given a string, return a string length 1 from its front, unless front is false, in which case return a string length 1 from its back. 
+Given a string, return a string length 1 from its front, unless front is false, 
+in which case return a string length 1 from its back. 
 The string will be non-empty.
 
 Some Test Cases: 
@@ -179,7 +187,8 @@ Solution:
         }
 
 #withoutEnd2
-Given a string, return a version without both the first and last char of the string. The string may be any length, including 0.
+Given a string, return a version without both the first and last char of the string. 
+The string may be any length, including 0.
 
 Some Test Cases: 
 withouEnd2("Hello") → "ell"
@@ -219,7 +228,8 @@ Solution:
         }
         
 #nTwice 
-Given a string and an int n, return a string made of the first and last n chars from the string. The string length will be at least n.
+Given a string and an int n, return a string made of the first and last n chars from the string. 
+The string length will be at least n.
 
 Some Test Cases: 
 nTwice("Hello", 2) → "Helo"
@@ -233,7 +243,8 @@ Solution:
 
 #twoChar 
 Given a string and an index, return a string length 2 starting at the given index. 
-If the index is too big or too small to define a string length 2, use the first 2 chars. The string length will be at least 2.
+If the index is too big or too small to define a string length 2, use the first 2 chars. 
+The string length will be at least 2.
 
 Some Test Cases: 
 twoChar("java", 0) → "ja"
@@ -246,7 +257,8 @@ Solution:
         }
 
 #middleThree
-Given a string of odd length, return the string length 3 from its middle, so "Candy" yields "and". The string length will be at least 3.
+Given a string of odd length, return the string length 3 from its middle, so "Candy" yields "and". 
+The string length will be at least 3.
 
 Some Test Cases: 
 middleThree("Candy") → "and"
@@ -259,7 +271,8 @@ Solution:
         }
 
 #hasBad 
-Given a string, return true if "bad" appears starting at index 0 or 1 in the string, such as with "badxxx" or "xbadxx" but not "xxbadxx". 
+Given a string, return true if "bad" appears starting at index 0 or 1 in the string, 
+such as with "badxxx" or "xbadxx" but not "xxbadxx". 
 The string may be any length, including 0. Note: use .equals() to compare 2 strings.
 
 Some Test Cases: 
@@ -305,8 +318,9 @@ Solution:
         }
 
 #conCat 
-Given two strings, append them together (known as "concatenation") and return the result. However, if the concatenation 
-creates a double-char, then omit one of the chars, so "abc" and "cat" yields "abcat".
+Given two strings, append them together (known as "concatenation") and return the result. 
+However, if the concatenation creates a double-char, then 
+omit one of the chars, so "abc" and "cat" yields "abcat".
 
 Some Test Cases: 
 conCat("abc", "cat") → "abcat"
@@ -452,3 +466,76 @@ Solution:
             return result;
         }
 
+#startWord 
+Given a string and a second "word" string, we'll say that the word matches the string if 
+it appears at the front of the string, except its first char does not need to match exactly. 
+On a match, return the front of the string, or otherwise return the empty string. 
+So with the string "hippo" the word "hi" returns "hi" and "xip" returns "hip". 
+The word will be at least length 1.
+
+Some Test Cases: 
+startWord("hippo", "hi") → "hi"
+startWord("hippo", "xip") → "hip"
+startWord("hippo", "i") → "h"
+
+Solution: 
+        public String startWord(String str, String word) {
+            int strLength = str.length();
+            int wordLength = word.length();
+            if (wordLength > strLength) {
+                return "";
+            }
+
+            if (str.substring(1, wordLength).equals(word.substring(1))) {
+                return str.substring(0, wordLength);
+            }
+            
+            return ""; // no match
+        }   
+
+#withoutX
+Given a string, if the first or last chars are 'x', return the string without those 'x' chars, and 
+otherwise return the string unchanged.
+
+Some Test Cases: 
+withoutX("xHix") → "Hi"
+withoutX("xHi") → "Hi"
+withoutX("Hxix") → "Hxi"
+
+Solution: 
+        public String withoutX(String str) {
+            if (str.length() > 0 && str.charAt(0) == 'x') {
+                str = str.substring(1);
+            }
+            
+            if (str.length() > 0 && str.charAt(str.length() - 1) == 'x') {
+                str = str.substring(0, str.length() - 1);
+            }
+            
+            return str;
+        }
+
+#withoutX2 
+Given a string, if one or both of the first 2 chars is 'x', return the string without those 'x' chars, 
+and otherwise return the string unchanged. This is a little harder than it looks.
+
+Some Test Cases: 
+withoutX2("xHi") → "Hi"
+withoutX2("Hxi") → "Hi"
+withoutX2("Hi") → "Hi"
+
+Solution: 
+        public String withoutX2(String str) {
+            if (str.length() == 0 || (str.length() == 1 && str.charAt(0) == 'x')) {
+                return "";
+            }
+            String result = "";
+            if (str.charAt(0) != 'x') {
+                result += str.charAt(0);
+            }
+            if (str.charAt(1) != 'x') {
+                result += str.charAt(1);
+            }
+            result += str.substring(2);
+            return result;
+        }
