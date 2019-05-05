@@ -1,0 +1,88 @@
+#doubleChar 
+Given a string, return a string where for every char in the original, there are two chars.
+
+Some Test Cases: 
+doubleChar("The") → "TThhee"
+doubleChar("AAbb") → "AAAAbbbb"
+doubleChar("Hi-There") → "HHii--TThheerree"
+
+Solution: 
+        public String doubleChar(String str) {
+          int length=str.length(); 
+          String result = ""; 
+          for(int i=0;i < length;i++) { 
+             result = result + str.charAt(i) + str.charAt(i); 
+          }
+          return result; 
+        }
+        
+#countHi 
+Return the number of times that the string "hi" appears anywhere in the given string.
+
+Some Test Cases: 
+countHi("abc hi ho") → 1
+countHi("ABChi hi") → 2
+countHi("hihi") → 2
+
+Solution: 
+        public int countHi(String str) {
+          int hi_count = 0;
+          int length = str.length(); 
+
+          // restrict the loop bound
+          for(int i = 0;i < length -1;i++){ 
+             if(str.substring(i,i+2).equals("hi")){ 
+               hi_count++; 
+             } 
+          } 
+          return hi_count; 
+        }
+
+#catDog 
+Return true if the string "cat" and "dog" appear the same number of times in the given string.
+
+Some Test Cases: 
+catDog("catdog") → true
+catDog("catcat") → false
+catDog("1cat1cadodog") → true
+
+Solution:
+        public boolean catDog(String str) {
+          int cat_count=0, dog_count=0; 
+          int length = str.length(); 
+         
+          for(int i=0 ;i< length -2;i++){ 
+              if(str.substring(i,i+3).equals("cat")){ 
+                  cat_count++; 
+              }
+              if(str.substring(i,i+3).equals("dog")){ 
+                  dog_count++; 
+              }
+          } 
+          
+          return cat_count == dog_count; 
+        }
+        
+#countCode 
+Return the number of times that the string "code" appears anywhere in the given string, 
+except we'll accept any letter for the 'd', so "cope" and "cooe" count.
+
+Some Test Cases: 
+countCode("aaacodebbb") → 1
+countCode("codexxcode") → 2
+countCode("cozexxcope") → 2
+
+Solution: 
+        public int countCode(String str) {
+          int count = 0;
+          int length = str.length();
+          
+          // restrict the loop bound
+          for (int i = 0; i < length - 3; i++) {
+              if (str.substring(i, i + 2).equals("co") && str.substring(i + 3, i + 4).equals("e")) {
+                  count++;
+              }
+          }
+          
+          return count;
+      }
