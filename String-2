@@ -86,3 +86,69 @@ Solution:
           
           return count;
       }
+
+#endOther 
+Given two strings, return true if either of the strings appears at the very end of the other string, 
+ignoring upper/lower case differences (in other words, the computation should not be "case sensitive"). 
+Note: str.toLowerCase() returns the lowercase version of a string.
+
+Some Test Cases: 
+endOther("Hiabc", "abc") → true
+endOther("AbC", "HiaBc") → true
+endOther("abc", "abXabc") → true
+
+Solution: 
+        public boolean endOther(String a, String b) {
+          int aLength = a.length(); 
+          int bLength = b.length(); 
+
+          if(aLength < bLength){ 
+             return b.substring(bLength-aLength).toLowerCase().equals(a.toLowerCase());  
+          }
+
+          return a.substring(aLength-bLength).toLowerCase().equals(b.toLowerCase()); 
+        } 
+
+#xyzThere 
+Return true if the given string contains an appearance of "xyz" where 
+the xyz is not directly preceeded by a period (.). So "xxyz" counts but "x.xyz" does not.
+
+Some Test Cases: 
+xyzThere("abcxyz") → true
+xyzThere("abc.xyz") → false
+xyzThere("xyz.abc") → true
+
+Solution: 
+         public boolean xyzThere(String str) {
+          int length =  str.length(); 
+          for(int i=0;i< length-2;) { 
+            if(str.charAt(i)=='.'){
+              i = i + 2;   // skips the next character (Be careful!) 
+            } else if(str.substring(i,i+3).toLowerCase().equals("xyz")){ 
+                return true;  
+            } else { 
+              i++; 
+            }
+          }
+
+          return false; 
+        }
+
+#bobThere 
+Return true if the given string contains a "bob" string, but where the middle 'o' char can be any char.
+
+Some Test Cases: 
+bobThere("abcbob") → true
+bobThere("b9b") → true
+bobThere("bac") → false
+
+Solution: 
+        public boolean bobThere(String str) {
+          int length = str.length();
+          for(int i = 0 ; i < length - 2; i++){ 
+            if(str.charAt(i) == 'b' && str.charAt(i+2) == 'b'){ 
+              return true; 
+            } 
+          }
+          return false; 
+        }
