@@ -301,3 +301,117 @@ Solution:
           }
           return result; 
         }
+
+#prefixAgain
+Given a string, consider the prefix string made of the first N chars of the string. 
+Does that prefix string appear somewhere else in the string? 
+Assume that the string is not empty and that N is in the range 1..str.length().
+
+Some Test Cases:
+prefixAgain("abXYabc", 1) → true
+prefixAgain("abXYabc", 2) → true
+prefixAgain("abXYabc", 3) → false
+
+Solution: 
+        public boolean prefixAgain(String str, int n) {
+          String firstNChars = str.substring(0,n);
+          int length = str.length();
+          for(int i=1;i <=length - n;i++){ 
+            if(str.substring(i,i+n).equals(firstNChars)){ 
+              return true;   
+            }
+          }
+          return false;
+        }
+
+
+#xyzMiddle 
+Given a string, does "xyz" appear in the middle of the string? To define middle, 
+we'll say that the number of chars to the left and right of the "xyz" must differ by at most one. 
+This problem is harder than it looks.
+
+Some Test Cases: 
+xyzMiddle("AAxyzBB") → true
+xyzMiddle("AxyzBB") → true
+xyzMiddle("AxyzBBB") → false
+Solution: 
+        public boolean xyzMiddle(String str) {
+          String xyz = "xyz";
+          int len = str.length();
+          int middle = len / 2;
+
+          // case: boundry condition 
+          if (len < 3)
+            return false;
+
+          // case: odd length
+          if (len % 2 != 0) {
+            return xyz.equals(str.substring(middle-1,middle+2));
+          } 
+
+          // case: even length 
+          return (
+            xyz.equals(str.substring(middle-1,middle+2)) ||
+            xyz.equals(str.substring(middle-2,middle+1))
+          ); 
+        }
+
+#getSandwich
+A sandwich is two pieces of bread with something in between. 
+Return the string that is between the first and last appearance of "bread" in the given string, 
+or return the empty string "" if there are not two pieces of bread.
+
+Some Test Cases: 
+getSandwich("breadjambread") → "jam"
+getSandwich("xxbreadjambreadyy") → "jam"
+getSandwich("xxbreadyy") → ""
+
+Solution: 
+        public String getSandwich(String str) {
+          String bread  = "bread"; 
+          int breadLength = bread.length(); 
+          int length = str.length() - breadLength + 1; 
+
+          int firstBreadIndex = -1,secondBreadIndex = -1;  
+          int breadCount = 0, i = 0; 
+
+          while(i < length){ 
+            if(str.substring(i,i+breadLength).equals(bread)){
+              breadCount++; 
+              if(breadCount ==1) {
+                firstBreadIndex = i;
+              } 
+              secondBreadIndex = i; 
+              // Don't forget it !!!
+              i +=breadLength; 
+            } else { 
+              i++; 
+            }
+          }
+          if(firstBreadIndex == secondBreadIndex ){ 
+            return ""; 
+          }
+
+          return str.substring(firstBreadIndex + breadLength,secondBreadIndex);  
+        }
+
+#sameStarChar
+Returns true if for every '*' (star) in the string, 
+if there are chars both immediately before and after the star, 
+they are the same.
+
+Some Test Cases:
+sameStarChar("xy*yzz") → true
+sameStarChar("xy*zzz") → false
+sameStarChar("*xa*az") → true
+
+Solution: 
+        public boolean sameStarChar(String str) {
+          int length = str.length();
+          for(int i= 1;i<length -1; i++) { 
+            if(str.charAt(i) =='*' && str.charAt(i-1) != str.charAt(i+1)) { 
+              return false;    
+            } 
+          }
+          return true;
+        }
