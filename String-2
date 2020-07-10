@@ -415,3 +415,151 @@ Solution:
           }
           return true;
         }
+        
+#oneTwo
+Given a string, compute a new string by moving the first char to come after the next two chars, 
+so "abc" yields "bca". Repeat this process for each subsequent group of 3 chars, 
+so "abcdef" yields "bcaefd". Ignore any group of fewer than 3 chars at the end.
+
+Some Test Cases:
+oneTwo("abc") → "bca"
+oneTwo("tca") → "cat"
+oneTwo("tcagdo") → "catdog"
+
+Solution:
+        public String oneTwo(String str) {
+          int length = str.length(); 
+          if(length < 3){ 
+            return "";  
+          } 
+
+          String result  = ""; 
+          for(int i=0; i < length-2; i = i + 3){ 
+            result += str.substring(i+1, i+3) + str.substring(i,i+1);  
+          } 
+          return result; 
+        }
+
+#zipZap
+Look for patterns like "zip" and "zap" in the string -- length-3, 
+starting with 'z' and ending with 'p'. 
+Return a string where for all such words, the middle letter is gone, so "zipXzap" yields "zpXzp".
+
+Some Test Cases:
+zipZap("zipXzap") → "zpXzp"
+zipZap("zopzop") → "zpzp"
+zipZap("zzzopzop") → "zzzpzp"
+
+Solution:
+        public String zipZap(String str) {
+          int length = str.length();
+          if(length < 3) { return str; }
+
+          String result ="";
+          int i = 0; 
+          while(i < length){
+            if(str.charAt(i)=='z' && str.charAt(i+2)=='p'){
+              result +="zp"; 
+              i = i + 3; 
+            } else { 
+              result +=str.charAt(i);  
+              i++; 
+            }  
+          } 
+
+          return result; 
+        }
+        
+#starOut
+Return a version of the given string, where for every star (*) in the string the star and 
+the chars immediately to its left and right are gone. So "ab*cd" yields "ad" and "ab**cd" also yields "ad".
+
+Some Test Cases:
+starOut("ab*cd") → "ad"
+starOut("ab**cd") → "ad"
+starOut("sm*eilly") → "silly"
+
+Solution:
+        public String starOut(String str) {
+          int length = str.length();
+
+          String result =""; 
+          for(int i = 0; i < length; i++){ 
+            if(str.charAt(i) == '*') { continue; }
+            if(i > 0 && str.charAt(i-1) == '*') { continue; }
+            if(i < length - 1 && str.charAt(i+1) == '*') { continue; }
+
+            result += str.charAt(i); 
+          }
+
+          return result; 
+        }
+
+#plusOut
+Given a string and a non-empty word string, 
+return a version of the original String where 
+all chars have been replaced by pluses ("+"), 
+except for appearances of the word string which are preserved unchanged.
+
+Some Test Cases: 
+plusOut("12xy34", "xy") → "++xy++"
+plusOut("12xy34", "1") → "1+++++"
+plusOut("12xy34xyabcxy", "xy") → "++xy++xy+++xy"
+
+Solution:
+        public String plusOut(String str, String word) {
+          int wordLength =  word.length(); 
+          int strLength = str.length(); 
+
+          String result = ""; 
+          int i = 0; 
+          while(i < strLength){ 
+            if(i + wordLength <= strLength && 
+               str.substring(i, i + wordLength).equals(word)
+            ){ 
+              result += word; 
+              i += wordLength; 
+            } else { 
+              result += "+";  
+              i++; 
+            }
+          }
+          return result; 
+        }
+        
+ #wordEnds
+Given a string and a non-empty word string, 
+return a string made of each char just before and 
+just after every appearance of the word in the string. 
+Ignore cases where there is no char before or after the word, and 
+a char may be included twice if it is between two words.
+
+Some Test Cases:
+wordEnds("abcXY123XYijk", "XY") → "c13i"
+wordEnds("XY123XY", "XY") → "13"
+wordEnds("XY1XY", "XY") → "11"
+
+Solution:
+        public String wordEnds(String str, String word) {
+          int strLength  = str.length();
+          int wordLength = word.length();
+
+          String result = ""; 
+          int i = 0; 
+          while(i < strLength){ 
+            if(i + wordLength <= strLength && 
+               str.substring(i,i + wordLength).equals(word)
+            ){ 
+              if(i > 0) { 
+                result += str.charAt(i-1); 
+              } 
+              if(i + wordLength < strLength) { 
+                result += str.charAt(i + wordLength); 
+              }
+              i += wordLength; 
+            } else { 
+              i++;  
+            }
+          }
+          return result; 
+        }
